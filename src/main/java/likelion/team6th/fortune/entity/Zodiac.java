@@ -27,6 +27,8 @@ public class Zodiac {
 	@Setter
 	private String imgLink;
 	
+	private String zodiacType;
+	
 	protected Zodiac() {}
 	
 	private Zodiac(String context, String imgLink) {
