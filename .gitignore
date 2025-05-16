@@ -207,3 +207,9 @@ hs_err_pid*
 replay_pid*
 
 # End of https://www.toptal.com/developers/gitignore/api/java,intellij,eclipse
+
+# target
+target
+
+# 서버 설정값
+application.properties
