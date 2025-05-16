@@ -212,4 +212,4 @@ replay_pid*
 target
 
 # 서버 설정값
-application.properties
+src/main/resources/application.properties
