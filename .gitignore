@@ -213,3 +213,7 @@ target
 
 # 서버 설정값
 src/main/resources/application.properties
+
+# STS 설정값
+.classpath
+.project
