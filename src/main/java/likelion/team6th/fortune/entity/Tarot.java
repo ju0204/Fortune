@@ -22,19 +22,40 @@ public class Tarot {
 	private Long id;
 	
 	@Setter
-	private String context;
+	@Column(columnDefinition = "TEXT", name = "contextLove")
+	private String contextLove;
 	
 	@Setter
+	@Column(columnDefinition = "TEXT", name = "contextCareer")
+	private String contextCareer;
+	
+	@Setter
+	@Column(columnDefinition = "TEXT", name = "contextMoney")
+	private String contextMoney;
+	
+	@Setter
+	@Column(columnDefinition = "TEXT", name = "contextHealth")
+	private String contextHealth;
+	
+	@Setter
+	@Column(name = "imgLink")
 	private String imgLink;
 	
 	protected Tarot() {}
 	
-	private Tarot(String context, String imgLink) {
-		this.context = context;
+	private Tarot(String contextLove, String contextCareer, String contextMoney, String contextHealth,
+			String imgLink) {
+		this.contextLove = contextLove;
+		this.contextCareer = contextCareer;
+		this.contextMoney = contextMoney;
+		this.contextHealth = contextHealth;
 		this.imgLink = imgLink;
 	}
 	
-	public static Tarot of(String context, String imgLink) {
-		return new Tarot(context, imgLink);
+	public static Tarot of(String contextLove, String contextCareer, String contextMoney, String contextHealth,
+			String imgLink) {
+		return new Tarot(contextLove, contextCareer, contextMoney, contextHealth, imgLink);
 	}
+
+	
 }
