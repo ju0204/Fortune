@@ -38,9 +38,9 @@ public class TarotController {
 	public ResponseEntity<String> deletePost(@PathVariable("id") Long id) {
         boolean deleted = tarotService.deleteTarot(id);
         if (deleted) {
-            return ResponseEntity.ok("Zodiac deleted successfully.");
+            return ResponseEntity.ok("Tarot deleted successfully.");
         } else {
-            return ResponseEntity.status(HttpStatus.NOT_FOUND).body("Zodiac not found.");
+            return ResponseEntity.status(HttpStatus.NOT_FOUND).body("Tarot not found.");
         }
     }
 	
