@@ -10,6 +10,7 @@ import lombok.Getter;
 import lombok.Setter;
 import lombok.ToString;
 
+//@JsonIgnoreProperties({"hibernateLazyInitializer", "handler"})
 @Getter
 @ToString
 @Entity
@@ -55,7 +56,5 @@ public class Tarot {
 	public static Tarot of(String contextLove, String contextCareer, String contextMoney, String contextHealth,
 			String imgLink) {
 		return new Tarot(contextLove, contextCareer, contextMoney, contextHealth, imgLink);
+		}
 	}
-
-	
-}

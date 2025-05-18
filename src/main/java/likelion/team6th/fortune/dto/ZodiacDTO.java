@@ -1,11 +1,5 @@
 package likelion.team6th.fortune.dto;
 
-import jakarta.persistence.Column;
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
-import jakarta.persistence.Table;
 import likelion.team6th.fortune.entity.Zodiac;
 import lombok.Getter;
 import lombok.Setter;
@@ -35,6 +29,7 @@ public class ZodiacDTO {
 		this.zodiacType = zodiacType;
 	}
 	
+
 	public static ZodiacDTO of(Long id, String context, String imgLink, String zodiacType) {
 		return new ZodiacDTO(id, context, imgLink, zodiacType);
 	}
