@@ -1,7 +1,5 @@
 package likelion.team6th.fortune.entity;
 
-import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
-
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
@@ -58,7 +56,5 @@ public class Tarot {
 	public static Tarot of(String contextLove, String contextCareer, String contextMoney, String contextHealth,
 			String imgLink) {
 		return new Tarot(contextLove, contextCareer, contextMoney, contextHealth, imgLink);
+		}
 	}
-
-	
-}

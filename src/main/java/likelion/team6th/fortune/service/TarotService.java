@@ -1,15 +1,9 @@
 package likelion.team6th.fortune.service;
 
-import java.util.List;
-import java.util.Random;
-import java.util.stream.Collectors;
-
 import org.springframework.stereotype.Service;
-
 import likelion.team6th.fortune.dto.TarotDTO;
 import likelion.team6th.fortune.entity.Tarot;
 import likelion.team6th.fortune.repository.TarotRepository;
-import likelion.team6th.fortune.repository.ZodiacRepository;
 import lombok.RequiredArgsConstructor;
 
 
@@ -64,8 +58,4 @@ public class TarotService {
             return false;
         }
 	}
-
-
-	
-	
 }
