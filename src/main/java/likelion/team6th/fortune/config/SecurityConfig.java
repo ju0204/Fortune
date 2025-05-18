@@ -29,7 +29,7 @@ public class SecurityConfig {
 
         http
                 .authorizeHttpRequests(authorizeRequests -> authorizeRequests
-                    .requestMatchers("/admin").authenticated() //admin 요청에 대해서 유저가 인증이 되었다면.
+                    .requestMatchers("/admin/**").authenticated() //admin 요청에 대해서 유저가 인증이 되었다면.
                     .anyRequest().permitAll()); //어떠한 요청이든 접근을 허용.
 
         http
@@ -37,8 +37,16 @@ public class SecurityConfig {
                         form
                                 .loginPage("/login")    //로그인 페이지의 경로 [GET]
                                 .loginProcessingUrl("/login") //로그인 요청 경로 [POST]
-                                .failureUrl("/") //로그인 실패시 해당 페이지로 이동합니다.
+                                .failureUrl("/fail") //로그인 실패시 해당 페이지로 이동합니다.
                                 .defaultSuccessUrl("/admin")); //로그인 성공시 해당 페이지로 이동합니다.
+
+        http
+                .logout(logout ->
+                        logout
+                                .logoutUrl("/logout")
+                                .logoutSuccessUrl("/")
+                                .invalidateHttpSession(true) //세션을 삭제합니다.
+                                .deleteCookies("JSESSIONID")); //쿠키에 저장중이던 토큰을 삭제.
 
         return http.build();
     }

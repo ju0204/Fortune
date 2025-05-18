@@ -1,6 +1,9 @@
 package likelion.team6th.fortune.controller;
 
+import likelion.team6th.fortune.config.auth.PrincipalDetails;
+import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 
@@ -17,13 +20,13 @@ public class MainContoller {
         return "login";
     }
 
-    @GetMapping("/signUp")
-    public String signUpPage() {
-        return "signUp";
+    @GetMapping("/fail")
+    public String failPage() {
+        return "fail";
     }
 
     @GetMapping("/admin")
-    public String adminPage() {
+    public String adminPage(@AuthenticationPrincipal PrincipalDetails principalDetails, Model model) {
         return "admin";
     }
 

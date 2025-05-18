@@ -2,7 +2,7 @@ package likelion.team6th.fortune.config.auth;
 
 
 import likelion.team6th.fortune.entity.Admin;
-import likelion.team6th.fortune.repository.adminRepository;
+import likelion.team6th.fortune.repository.AdminRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
@@ -14,8 +14,7 @@ import org.springframework.stereotype.Service;
 @RequiredArgsConstructor
 public class PrincipalDetailsService implements UserDetailsService {
 
-    private final adminRepository adminrepository;
-    private final PasswordEncoder passwordEncoder;
+    private final AdminRepository adminrepository;
 
     @Override
     public UserDetails loadUserByUsername(String adminId) throws UsernameNotFoundException {
@@ -25,7 +24,6 @@ public class PrincipalDetailsService implements UserDetailsService {
         if(admin == null) {
             throw new UsernameNotFoundException("Id 혹은 Pw를 잘못 입력하였습니다.");
         }
-
 
         return new PrincipalDetails(admin);
     }
