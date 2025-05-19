@@ -14,8 +14,8 @@ public class PagingService {
 	//화면에 출력 페이지 정의
 	public List<Integer> getPageNumbers(int pageNumber, int totalPages) {
 		
-		int startPage = Math.max((pageNumber - (PAGE_LENGTH/2)), 0);
-		int endPage = Math.min((startPage + PAGE_LENGTH), totalPages);
+		int startPage = Math.max((pageNumber - (PAGE_LENGTH / 2) + 1), 1);
+		int endPage = Math.min((startPage + PAGE_LENGTH), totalPages + 1);
 		
 		return IntStream.range(startPage, endPage).boxed().toList();
 
