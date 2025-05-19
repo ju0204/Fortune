@@ -17,5 +17,5 @@ public interface ZodiacRepository extends JpaRepository<Zodiac, Long> {
 	List<Long> findAllIds();
 	
 	@Query("SELECT z FROM Zodiac z WHERE z.zodiacType = :zodiacType")
-	Zodiac getReferenceByZodiacType(@Param("zodiacType") String zodiacType); 
+	List<Zodiac> getReferencesByZodiacType(@Param("zodiacType") String zodiacType); 
 }

@@ -56,5 +56,5 @@ public class Tarot {
 	public static Tarot of(String contextLove, String contextCareer, String contextMoney, String contextHealth,
 			String imgLink) {
 		return new Tarot(contextLove, contextCareer, contextMoney, contextHealth, imgLink);
-		}
 	}
+}

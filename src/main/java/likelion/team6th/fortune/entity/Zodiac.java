@@ -26,15 +26,7 @@ public class Zodiac {
 	
 	@Setter
 	@Column(columnDefinition = "TEXT")
-	private String context1;
-	
-	@Setter
-	@Column(columnDefinition = "TEXT")
-	private String context2;
-	
-	@Setter
-	@Column(columnDefinition = "TEXT")
-	private String context3;
+	private String context;
 	
 	@Setter
 	@Column(columnDefinition = "TEXT", name = "imgLink")
@@ -46,16 +38,14 @@ public class Zodiac {
 	
 	protected Zodiac() {}
 	
-	private Zodiac(String context1, String context2, String context3, String imgLink, String zodiacType) {
-		this.context1 = context1;
-		this.context2 = context2;
-		this.context3 = context3;
+	private Zodiac(String context, String imgLink, String zodiacType) {
+		this.context = context;
 		this.imgLink = imgLink;
 		this.zodiacType = zodiacType;
 	}
 
-	public static Zodiac of(String context1, String context2, String context3, String imgLink, String zodiacType) {
-		return new Zodiac(context1, context2, context3, imgLink, zodiacType);
+	public static Zodiac of(String context, String imgLink, String zodiacType) {
+		return new Zodiac(context, imgLink, zodiacType);
 
 	}
 }
