@@ -6,6 +6,8 @@ import java.util.Objects;
 import java.util.Random;
 import java.util.stream.Collectors;
 
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
 import likelion.team6th.fortune.dto.TarotDTO;
@@ -85,18 +87,17 @@ public class CommonService {
 		return zodiacDTO;
 	}
 	
-	public List<TarotDTO> getAllTarots() {
-		List<Tarot> tarotList = tarotRepository.findAll();
-		 return tarotList.stream()
-                .map(TarotDTO::from)  // ← 여기서 from() 메서드 사용
-                .collect(Collectors.toList());
+	public Page<TarotDTO> getAllTarots(Pageable pageable) {
+		Page<TarotDTO> tarotList = tarotRepository.findAll(pageable)
+												.map(TarotDTO::from);
+		return tarotList;
 	}
 
-	public List<ZodiacAdminDTO> getAllZodiacs() {
-		List<Zodiac> zodiacList = zodiacRepository.findAll();
-		return zodiacList.stream()
-				.map(ZodiacAdminDTO::from)
-				.collect(Collectors.toList());
+	public Page<ZodiacAdminDTO> getAllZodiacs(Pageable pageable) {
+		Page<ZodiacAdminDTO> zodiacList = zodiacRepository.findAll(pageable)
+												.map(ZodiacAdminDTO::from);
+		
+		return zodiacList;
 	}
 	
 }
