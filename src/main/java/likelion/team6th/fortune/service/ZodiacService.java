@@ -17,8 +17,8 @@ public class ZodiacService {
 		
 		Zodiac zodiac = Zodiac.of(
 			zodiacAdminDTO.getContext(),
-			zodiacAdminDTO.getZodiacType(),
-			zodiacAdminDTO.getImgLink()
+			zodiacAdminDTO.getImgLink(),
+			zodiacAdminDTO.getZodiacType()
 			);
 		
 		Zodiac save = zodiacRepository.save(zodiac);
