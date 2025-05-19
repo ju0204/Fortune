@@ -34,16 +34,9 @@ public class ZodiacDTO {
 		return new ZodiacDTO(id, context, imgLink, zodiacType);
 	}
 	
-	public static ZodiacDTO from(Zodiac zodiac, int index) {
-	    String context;
-	    switch (index) {
-	        case 0 -> context = zodiac.getContext1();
-	        case 1 -> context = zodiac.getContext2();
-	        case 2 -> context = zodiac.getContext3();
-	        default -> throw new IllegalArgumentException("index는 1~3 사이여야 합니다.");
-	    }
+	public static ZodiacDTO from(Zodiac zodiac) {
 
-	    return new ZodiacDTO(zodiac.getId(), context, zodiac.getZodiacType(), zodiac.getImgLink());
+	    return new ZodiacDTO(zodiac.getId(), zodiac.getContext(), zodiac.getZodiacType(), zodiac.getImgLink());
 	}
 }
 

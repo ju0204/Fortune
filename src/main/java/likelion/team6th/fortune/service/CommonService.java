@@ -74,13 +74,13 @@ public class CommonService {
 		
 		String zodiacType = calcZodiac(year);
 		
-		Zodiac zodiac = zodiacRepository.getReferenceByZodiacType(zodiacType);	
+		List<Zodiac> zodiacList = zodiacRepository.getReferencesByZodiacType(zodiacType);	
 		
 		Random random = new Random(generateDailySeed(year, name));
 		
-		int index = random.nextInt(3); 
+		int index = random.nextInt(zodiacList.size()); 
 		
-		ZodiacDTO zodiacDTO = ZodiacDTO.from(zodiac, index);
+		ZodiacDTO zodiacDTO = ZodiacDTO.from(zodiacList.get(index));
 				
 		return zodiacDTO;
 	}

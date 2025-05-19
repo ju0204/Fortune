@@ -4,7 +4,6 @@ import org.springframework.stereotype.Service;
 
 import likelion.team6th.fortune.dto.ZodiacAdminDTO;
 import likelion.team6th.fortune.entity.Zodiac;
-import likelion.team6th.fortune.repository.TarotRepository;
 import likelion.team6th.fortune.repository.ZodiacRepository;
 import lombok.RequiredArgsConstructor;
 
@@ -17,9 +16,7 @@ public class ZodiacService {
 	public ZodiacAdminDTO registerZodiac(ZodiacAdminDTO zodiacAdminDTO) {
 		
 		Zodiac zodiac = Zodiac.of(
-			zodiacAdminDTO.getContext1(),
-			zodiacAdminDTO.getContext2(),
-			zodiacAdminDTO.getContext3(),
+			zodiacAdminDTO.getContext(),
 			zodiacAdminDTO.getZodiacType(),
 			zodiacAdminDTO.getImgLink()
 			);
@@ -37,9 +34,7 @@ public class ZodiacService {
 		Zodiac zodiac = zodiacRepository.findById(id)
 				.orElseThrow(() -> new IllegalArgumentException("해당 ID의 십이지신이 없습니다: " + id));
 		
-		zodiac.setContext1(zodiacAdminDTO.getContext1());
-		zodiac.setContext2(zodiacAdminDTO.getContext2());
-		zodiac.setContext3(zodiacAdminDTO.getContext3());
+		zodiac.setContext(zodiacAdminDTO.getContext());
 		zodiac.setZodiacType(zodiacAdminDTO.getZodiacType());
 		zodiac.setImgLink(zodiacAdminDTO.getImgLink());
 

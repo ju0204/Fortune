@@ -38,10 +38,11 @@ public class TarotService {
 				.orElseThrow(() -> new IllegalArgumentException("해당 ID의 타로가 없습니다: " + id));
 		
 		tarot.setContextLove(tarotDTO.getContextLove());
-	    tarot.setContextCareer(tarotDTO.getContextCareer());
-	    tarot.setContextMoney(tarotDTO.getContextMoney());
-	    tarot.setContextHealth(tarotDTO.getContextHealth());
-	    tarot.setImgLink(tarotDTO.getImgLink());
+		tarot.setContextCareer(tarotDTO.getContextCareer());
+		tarot.setContextHealth(tarotDTO.getContextHealth());
+		tarot.setContextMoney(tarotDTO.getContextMoney());
+		tarot.setImgLink(tarotDTO.getImgLink());
+		
 
 	    Tarot update = tarotRepository.save(tarot);
 	   
