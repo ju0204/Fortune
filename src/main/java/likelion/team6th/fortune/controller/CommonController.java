@@ -16,6 +16,7 @@ import likelion.team6th.fortune.dto.TarotDTO;
 import likelion.team6th.fortune.dto.ZodiacAdminDTO;
 import likelion.team6th.fortune.dto.ZodiacDTO;
 import likelion.team6th.fortune.service.CommonService;
+import likelion.team6th.fortune.service.PagingService;
 import lombok.RequiredArgsConstructor;
 
 @RequiredArgsConstructor
@@ -23,6 +24,7 @@ import lombok.RequiredArgsConstructor;
 public class CommonController {
 	
 	private final CommonService commonService;
+	private final PagingService pagingService;
 	
 	@PostMapping("/fortune")
 	public Map<String, Object> drawFortune(@RequestBody Map<String, Object> request) {
@@ -48,16 +50,20 @@ public class CommonController {
 	@GetMapping("/admin/list")
 	public Map<String, Object> getAllFortune(@PageableDefault(page = 0, size = 10) Pageable pageable) {
 		
-		
-		System.out.println("실행 완료");
-//		System.out.println(zodiacList);
 		Page<TarotDTO> tarotList = commonService.getAllTarots(pageable);
 		Page<ZodiacAdminDTO> zodiacList = commonService.getAllZodiacs(pageable);
 
 		Map<String, Object> response = new HashMap<>();
 		
+		List<Integer> tarotPageNumbers  = pagingService.getPageNumbers(pageable.getPageNumber(),
+																	tarotList.getTotalPages());
+		List<Integer> zodiacPageNumbers  = pagingService.getPageNumbers(pageable.getPageNumber(),
+																	zodiacList.getTotalPages());
+		
 	    response.put("tarotList", tarotList);
 	    response.put("zodiacList", zodiacList);
+	    response.put("tarotPage", tarotPageNumbers);
+	    response.put("zodiacPage", zodiacPageNumbers);
 		
         return response;
     }
