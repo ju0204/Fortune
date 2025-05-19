@@ -4,6 +4,9 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
+import org.springframework.data.web.PageableDefault;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -43,17 +46,20 @@ public class CommonController {
 	}
 	
 	@GetMapping("/admin/list")
-	public Map<String, Object> getAllFortune() {
+	public Map<String, Object> getAllFortune(@PageableDefault(page = 0, size = 10) Pageable pageable) {
 		
-		List<TarotDTO> tarotList = commonService.getAllTarots();
-		List<ZodiacAdminDTO> zodiacList = commonService.getAllZodiacs();
+		
+		System.out.println("실행 완료");
+//		System.out.println(zodiacList);
+		Page<TarotDTO> tarotList = commonService.getAllTarots(pageable);
+		Page<ZodiacAdminDTO> zodiacList = commonService.getAllZodiacs(pageable);
 
 		Map<String, Object> response = new HashMap<>();
+		
 	    response.put("tarotList", tarotList);
 	    response.put("zodiacList", zodiacList);
 		
         return response;
     }
-
 
 }
