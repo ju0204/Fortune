@@ -51,4 +51,8 @@ public class TarotDTO {
 	public static TarotDTO from(Tarot tarot) {
 		return new TarotDTO(tarot.getId(), tarot.getContextLove(), tarot.getContextCareer(), tarot.getContextMoney(), tarot.getContextHealth(), tarot.getImgLink());
 	}
+	
+	public static TarotDTO ofNew() {
+		return new TarotDTO(null, null, null, null, null, null);
+	}
 }

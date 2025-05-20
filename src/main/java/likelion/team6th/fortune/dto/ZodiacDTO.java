@@ -36,7 +36,11 @@ public class ZodiacDTO {
 	
 	public static ZodiacDTO from(Zodiac zodiac) {
 
-	    return new ZodiacDTO(zodiac.getId(), zodiac.getContext(), zodiac.getZodiacType(), zodiac.getImgLink());
+	    return new ZodiacDTO(zodiac.getId(), zodiac.getContext(), zodiac.getImgLink(), zodiac.getZodiacType());
+	}
+	
+	public static ZodiacDTO ofNew() {
+		return new ZodiacDTO(null, null, null, null);
 	}
 }
 

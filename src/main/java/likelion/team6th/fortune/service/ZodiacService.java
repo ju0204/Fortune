@@ -3,6 +3,7 @@ package likelion.team6th.fortune.service;
 import org.springframework.stereotype.Service;
 
 import likelion.team6th.fortune.dto.ZodiacAdminDTO;
+import likelion.team6th.fortune.dto.ZodiacDTO;
 import likelion.team6th.fortune.entity.Zodiac;
 import likelion.team6th.fortune.repository.ZodiacRepository;
 import lombok.RequiredArgsConstructor;
@@ -52,5 +53,11 @@ public class ZodiacService {
             return false;
         }
     }
+
+
+	public ZodiacDTO findById(Long id) {
+		Zodiac zodiac = zodiacRepository.findById(id).orElseThrow(() -> new IllegalArgumentException("해당 띠 운세가 없습니다: " + id));
+		return ZodiacDTO.from(zodiac);
+	}
 
 }

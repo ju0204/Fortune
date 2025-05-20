@@ -35,6 +35,6 @@ public class ZodiacAdminDTO {
 	}
 	
 	public static ZodiacAdminDTO from(Zodiac zodiac) {
-	    return new ZodiacAdminDTO(zodiac.getId(), zodiac.getContext(), zodiac.getZodiacType(), zodiac.getImgLink());
+	    return new ZodiacAdminDTO(zodiac.getId(), zodiac.getContext(), zodiac.getImgLink(), zodiac.getZodiacType());
 	}
 }
