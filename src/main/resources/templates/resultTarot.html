@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>타로 결과</title>
+    <link rel="stylesheet" th:href="@{/resultTarot.css}">
+</head>
+
+<body>
+<div class="container">
+    <!-- 상단 셀렉트 박스 -->
+    <div class="top-bar">
+        <select onchange="location.href=this.value">
+            <option value="/resultTarot.html" selected>타로</option>
+            <option value="/resultZodiac.html">띠</option>
+        </select>
+        
+    </div>
+    <button onclick="goToMain()" class="main-button">메인화면으로</button>
+        <script>
+            function goToMain() {
+            window.location.href = "/main.html"; 
+            }
+        </script>
+
+    <!-- 본문 콘텐츠 -->
+    <div class="content">
+        <!-- 이미지 -->
+        <div class="image-box">
+            <img th:src="${tarot.imgLink}" alt="타로 이미지" class="tarot-img">
+        </div>
+
+        <!-- 오른쪽 패널 -->
+        <div class="right-panel">
+            <!-- 버튼들 -->
+            <div class="buttons">
+                <button onclick="showContext('contextLove')">사랑</button>
+                <button onclick="showContext('contextMoney')">금전</button>
+                <button onclick="showContext('contextCareer')">커리어</button>
+                <button onclick="showContext('contextHealth')">건강</button>
+            </div>
+
+            <!-- 해석 박스 -->
+            <div class="result-box" id="resultBox">
+                해석이 여기에 표시됩니다.
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- 스크립트 -->
+<script>
+    const tarot = {
+        contextLove: '[[${contextLove}]]',
+        contextMoney: '[[${contextMoney}]]',
+        contextCareer: '[[${contextCareer}]]',
+        contextHealth: '[[${contextHealth}]]'
+    };
+
+    function showContext(key) {
+        document.getElementById("resultBox").innerText = tarot[key];
+    }
+</script>
+</body>
+</html>
+
