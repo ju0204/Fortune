@@ -1,12 +1,10 @@
-const tarot = {
-    contextLove: '[[${contextLove}]]',        
-    contextMoney: '[[${contextMoney}]]',
-    contextCareer: '[[${contextCareer}]]',
-    contextHealth: '[[${contextHealth}]]'
-};
 
-function showContext(key) {
-    document.getElementById("resultBox").innerText = tarot[key];
+function showContext(idToShow) {
+    const ids = ["contextLove", "contextMoney", "contextCareer", "contextHealth"];
+
+    ids.forEach(id => {
+        document.getElementById(id).style.display = (id === idToShow) ? "inline" : "none";
+    });
 }
 
 function openPopup() {
@@ -30,21 +28,9 @@ function copyToClipboard() {
       });
   }
 
-function goToMain() {
-    window.location.href = "/index.html";
-}
-
-function hideAll(){
-  const tarotDiv = document.getElementById('present-tarot');
-  const zodiacDiv = document.getElementById('present-zodiac');
-  tarotDiv.style.display = 'none';
-  zodiacDiv.style.display = 'none';
-}
-
-
 const selector = document.getElementById('type_seletor');
-  const tarotDiv = document.getElementById('present-tarot');
-  const zodiacDiv = document.getElementById('present-zodiac');
+const tarotDiv = document.getElementById('present-tarot');
+const zodiacDiv = document.getElementById('present-zodiac');
 
   selector.addEventListener('change', function () {
     if (this.value === 'tarot') {

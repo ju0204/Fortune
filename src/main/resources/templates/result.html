@@ -3,21 +3,19 @@
 <head>
     <meta charset="UTF-8">
     <title>☆★ 운세결과 ★☆</title>
-    <link rel="stylesheet" th:href="@{/resultTarot.css}">
-    <link rel="stylesheet" href="/static/reset.css">
-    <link rel="stylesheet" href="/static/result.css">
-    
+    <link rel="stylesheet" th:href="@{/css/result.css}">
+
 </head>
 <body>
 <div class="container">
     <!-- 상단 셀렉트 박스 -->
     <div class="top-bar">
-        
-        <button onclick="goToMain()" class="main-button">
-            <img src="/static/image/house_icon.png">
-        </button>
 
-        <span> 1999년생 문지현 님의 운세 결과 입니다!</span>
+        <a class="main-button" th:href="@{/}">
+            <img th:src="@{/images/house_iconW.png}">
+        </a>
+
+        <span th:text="${userInfo.year} + '년생의 ' + ${userInfo.name} +'님의 운세입니다!'"></span>
 
 
         <select id="type_seletor">
@@ -27,7 +25,7 @@
         
     </div>
 
-
+<!--[[${tarot}]]-->
     <!-- 본문 콘텐츠 -->
 <div id="present-tarot">
     <div id="tarot-content">
@@ -39,7 +37,6 @@
         <!-- 오른쪽 패널 -->
         <div class="right-panel">
             <div id="tarot">
-            
                 <div class="buttons">
                     <button onclick="showContext('contextLove')">사랑</button>
                     <button onclick="showContext('contextMoney')">금전</button>
@@ -47,11 +44,10 @@
                     <button onclick="showContext('contextHealth')">건강</button>
                 </div>
                 <div class="result-box" id="resultBox">
-                    <span>
-                        Lorem ipsum dolor sit, amet consectetur adipisicing elit. Repre                        Lorem ipsum dolor sit, amet consectetur adipisicing elit. Reprehenderit illum, p                        Lorem ipsum dolor sit, amet consectetur adipisicing elit. Reprehenderit illum, provident omnis rerum sint ea hic recusandae vero cupiditate nostrum perferendis dignissimos blanditiis debitis amet quod voluptate! Animi, necessitatibus accusamus!
-                        provident omnis rerum sint ea hic recusandae vero cupiditate nostrum perferendis dignissimos blanditiis debitis amet quod voluptate! Animi, necessitatibus accusamus!
-                            rovident omnis rerum sint ea hic recusandae vero cupiditate nostrum perferendis dignissimos blanditiis debitis amet quod voluptate! Animi, necessitatibus accusamus!dolordolordolordolordolordolordolordolordolordolordolordolordolordolordolordolordolordolordolordolordolordolordolordolor
-                    </span>
+                    <span id="contextLove" th:text="${tarot.contextLove}" style="display:inline;"></span>
+                    <span id="contextMoney" th:text="${tarot.contextMoney}" style="display:none;"></span>
+                    <span id="contextCareer" th:text="${tarot.contextCareer}" style="display:none;"></span>
+                    <span id="contextHealth" th:text="${tarot.contextHealth}" style="display:none;"></span>
                 </div>
             </div>
         </div>
@@ -67,13 +63,9 @@
 
         <!-- 오른쪽 패널 -->
         <div class="right-panel">
-            <div id="tarot">
+            <div id="zodiac">
                 <div class="result-box" id="resultBox">
-                    <span>
-                        Lorem ipsum dolor sit, amet consectetur adipisicing elit. Repre                        Lorem ipsum dolor sit, amet consectetur adipisicing elit. Reprehenderit illum, p                        Lorem ipsum dolor sit, amet consectetur adipisicing elit. Reprehenderit illum, provident omnis rerum sint ea hic recusandae vero cupiditate nostrum perferendis dignissimos blanditiis debitis amet quod voluptate! Animi, necessitatibus accusamus!
-                        provident omnis rerum sint ea hic recusandae vero cupiditate nostrum perferendis dignissimos blanditiis debitis amet quod voluptate! Animi, necessitatibus accusamus!
-                            rovident omnis rerum sint ea hic recusandae vero cupiditate nostrum perferendis dignissimos blanditiis debitis amet quod voluptate! Animi, necessitatibus accusamus!dolordolordolordolordolordolordolordolordolordolordolordolordolordolordolordolordolordolordolordolordolordolordolordolor
-                    </span>
+                    <span th:text="${zodiac.context}"></span>
                 </div>
             </div>
         </div>
@@ -88,17 +80,12 @@
     <div id="qrPopup" class="popup hidden">
         <div class="popup-content">
             <span class="close-btn" onclick="closePopup()">&times;</span>
-            <img src="/static/image/qrcode.png" alt="QR 코드" class="qr-image">
-            <!-- <div> <input type="text" id="copyText" style="display: none;" value="www.naver.com"></input> 
-            <button class="share-button" onclick="openPopup()">공유하기</button></div> -->
-            <a href="https://www.naver.com">공유하기</a>
+            <img th:src="@{'data:image/jpeg;base64,'+${qrcode}}" alt="QR 코드" class="qr-image">
+            <a th:href="${address}">공유하기</a>
         </div>
     </div>
 </div>
-<script src="/static/script/result.js">
 
-    // hideAll();
-</script>
-
+<script th:src="@{/script/result.js}"> hideAllTexts() </script>
 </body>
 </html>

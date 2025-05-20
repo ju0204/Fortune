@@ -1,20 +1,33 @@
-<!doctype html>
+<!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport"
-          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <meta charset="UTF-8">
+  <title>오늘의 운세는? - ForuneTeller</title>
+  <link rel="stylesheet" th:href="@{/css/main.css}">
 </head>
 <body>
-    <title>IndexPage</title>
-</head>
-<body>
-<th:block th:replace="~{layout/header :: header}"></th:block>
-<h2> ★☆ 스프링 시큐리티 테스트 ☆★ </h2>
-<hr/>
-<button><a href="/login" style="text-decoration: none; color: black;"> 로그인페이지 </a></button>
-&nbsp;
-<button><a href="/admin" style="text-decoration: none; color: black;"> 관리자페이지 </a></button>
+
+  <!-- 톱니바퀴 버튼 -->
+  <div class="top-bar">
+    <a class="admin-button" th:href="@{/login}" >
+        <img  th:src="@{/images/adminPage_icon.png}" alt="관리자페이지이동">
+    </a>
+  </div>
+
+  <!-- 메인 흰 박스 -->
+  <div class="main-box">
+      <form th:action="@{/fortune}" method="POST">
+        <select class="input-field" name="year" >
+            <option value="">연도 선택</option>
+                <option th:each="year : ${#numbers.sequence(1985, 2005)}" th:value="${year}" th:text="${year}">
+            </option>
+        </select>
+          <input type="text" placeholder="이름 입력" class="input-field" name="name"/>
+          <input type="submit" class="fortune-button" value="운세보러 가기!"/>
+      </form>
+
+  </div>
+
 </body>
 </html>
+

@@ -38,7 +38,7 @@ public class SecurityConfig {
                                 .loginPage("/login")    //로그인 페이지의 경로 [GET]
                                 .loginProcessingUrl("/login") //로그인 요청 경로 [POST]
                                 .failureUrl("/fail") //로그인 실패시 해당 페이지로 이동합니다.
-                                .defaultSuccessUrl("/admin")); //로그인 성공시 해당 페이지로 이동합니다.
+                                .defaultSuccessUrl("/admin/list")); //로그인 성공시 해당 페이지로 이동합니다.
 
         http
                 .logout(logout ->
