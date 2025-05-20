@@ -18,9 +18,11 @@ import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.web.PageableDefault;
 import org.springframework.stereotype.Controller;
+
 import org.springframework.ui.Model;
 import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.*;
+
 
 import likelion.team6th.fortune.dto.TarotDTO;
 import likelion.team6th.fortune.dto.ZodiacAdminDTO;
@@ -75,19 +77,20 @@ public class CommonController {
 	public String getAllFortune(@PageableDefault(page = 0, size = 8) Pageable pageable,
 								@RequestParam(defaultValue = "타로") String category,
 								ModelMap map) {
-
 		Map<String, Object> response = new HashMap<>();
-
+		
 		if ("타로".equals(category)) {
 			Page<TarotDTO> tarotList = commonService.getAllTarots(pageable);
 			List<Integer> tarotPageNumbers  = pagingService.getPageNumbers(pageable.getPageNumber(),
-					tarotList.getTotalPages());
+																			tarotList.getTotalPages());
+
 			response.put("tarotList", tarotList);
 			response.put("tarotPage", tarotPageNumbers);
+      
 		} else if ("띠".equals(category)) {
 			Page<ZodiacAdminDTO> zodiacList = commonService.getAllZodiacs(pageable);
 			List<Integer> zodiacPageNumbers  = pagingService.getPageNumbers(pageable.getPageNumber(),
-					zodiacList.getTotalPages());
+					                                                            zodiacList.getTotalPages());
 			response.put("zodiacList", zodiacList);
 			response.put("zodiacPage", zodiacPageNumbers);
 		}
