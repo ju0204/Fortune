@@ -31,7 +31,7 @@ body {
 }
 
 /* 가운데 흰색 박스 */
-.main-box {
+.main-box form {
   background-color: white;
   padding: 40px;
   border-radius: 10px;

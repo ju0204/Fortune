@@ -1,14 +1,91 @@
-<!doctype html>
+<!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport"
-          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Result</title>
+    <title>☆★ 운세결과 ★☆</title>
+    <link rel="stylesheet" th:href="@{/css/result.css}">
+
 </head>
 <body>
-<h3 th:text="${name}"></h3>
-<h3 th:text="${year}"></h3>
+<div class="container">
+    <!-- 상단 셀렉트 박스 -->
+    <div class="top-bar">
+
+        <a class="main-button" th:href="@{/}">
+            <img th:src="@{/images/house_iconW.png}">
+        </a>
+
+        <span th:text="${userInfo.year} + '년생의 ' + ${userInfo.name} +'님의 운세입니다!'"></span>
+
+
+        <select id="type_seletor">
+            <option value="tarot" >타로</option>
+            <option value="zodiac">띠</option>
+        </select>
+        
+    </div>
+
+<!--[[${tarot}]]-->
+    <!-- 본문 콘텐츠 -->
+<div id="present-tarot">
+    <div id="tarot-content">
+        <!-- 왼쪽 패널 (이미지) -->
+        <div class="image-box">
+            <img th:src="${tarot.imgLink}" alt="타로 이미지" class="tarot result-img">
+        </div>
+
+        <!-- 오른쪽 패널 -->
+        <div class="right-panel">
+            <div id="tarot">
+                <div class="buttons">
+                    <button onclick="showContext('contextLove')">사랑</button>
+                    <button onclick="showContext('contextMoney')">금전</button>
+                    <button onclick="showContext('contextCareer')">커리어</button>
+                    <button onclick="showContext('contextHealth')">건강</button>
+                </div>
+                <div class="result-box" id="resultBox">
+                    <span id="contextLove" th:text="${tarot.contextLove}" style="display:inline;"></span>
+                    <span id="contextMoney" th:text="${tarot.contextMoney}" style="display:none;"></span>
+                    <span id="contextCareer" th:text="${tarot.contextCareer}" style="display:none;"></span>
+                    <span id="contextHealth" th:text="${tarot.contextHealth}" style="display:none;"></span>
+                </div>
+            </div>
+        </div>
+    </div>
+    </div>
+
+    <div id="present-zodiac" style="display: none;">
+    <div id="zodiac-content">
+        <!-- 왼쪽 패널 (이미지) -->
+        <div class="image-box">
+            <img th:src="${zodiac.imgLink}" alt="띠 이미지" class="zodiac result-img">
+        </div>
+
+        <!-- 오른쪽 패널 -->
+        <div class="right-panel">
+            <div id="zodiac">
+                <div class="result-box" id="resultBox">
+                    <span th:text="${zodiac.context}"></span>
+                </div>
+            </div>
+        </div>
+    </div>
+    </div>
+
+    
+    <!-- QR 코드 공유-->
+    <div class="share-button-wrapper">
+        <button class="share-button" onclick="openPopup()">친구에게 공유하기!</button>
+    </div>
+    <div id="qrPopup" class="popup hidden">
+        <div class="popup-content">
+            <span class="close-btn" onclick="closePopup()">&times;</span>
+            <img th:src="@{'data:image/jpeg;base64,'+${qrcode}}" alt="QR 코드" class="qr-image">
+            <a th:href="${address}">공유하기</a>
+        </div>
+    </div>
+</div>
+
+<script th:src="@{/script/result.js}"> hideAllTexts() </script>
 </body>
 </html>

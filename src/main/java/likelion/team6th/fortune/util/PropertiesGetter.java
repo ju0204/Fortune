@@ -19,5 +19,7 @@ public class PropertiesGetter {
     @Value("${data.crypt.key}")
     private String cryptkey;
 
+    @Value("${app.server.address}")
+    private String serverAddress;
 
 }
