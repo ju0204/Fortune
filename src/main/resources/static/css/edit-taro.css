@@ -1,0 +1,96 @@
+/* 전체 화면 중앙 정렬 */
+html, body {
+  margin: 0;
+  padding: 0;
+  height: 100%;
+  background-color: #f4f4f4;
+  font-family: 'Arial', sans-serif;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+/* 메인 박스 */
+.edit-box {
+  background: white;
+  padding: 30px 40px;
+  border-radius: 8px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  width: 1200px;
+  position: relative;
+}
+
+/* 제목 */
+.edit-box h2 {
+  text-align: center;
+  margin-bottom: 30px;
+}
+
+/* 테이블 스타일 */
+.edit-table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.edit-table td {
+  padding: 10px;
+  border: 1px solid #ddd;
+  text-align: center;
+}
+
+/* 이미지 미리보기 셀 */
+.image-preview {
+  width: 120px;
+  height: 120px;
+  background-color: #e0e0e0;
+  text-align: center;
+  vertical-align: middle;
+}
+
+.image-preview img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  cursor: pointer;
+}
+
+/* 숨겨진 파일 업로드 */
+input[type="file"] {
+  display: none;
+}
+
+/* 입력창 */
+input[type="text"] {
+  width: 95%;
+  padding: 8px;
+  font-size: 14px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+}
+
+/* 버튼 영역 (오른쪽 상단) */
+.edit-actions {
+  position: absolute;
+  top: 20px;
+  right: 30px;
+  display: flex;
+  gap: 10px;
+}
+
+.edit-actions .save-btn {
+  background-color: #3498db;
+  color: white;
+  border: none;
+  padding: 8px 14px;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+.edit-actions .cancel-btn {
+  background-color: #e74c3c;
+  color: white;
+  border: none;
+  padding: 8px 14px;
+  border-radius: 4px;
+  cursor: pointer;
+}
