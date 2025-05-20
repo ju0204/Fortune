@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>띠별 운세 결과</title>
+    <link rel="stylesheet" th:href="@{/resultZodiac.css}">
+</head>
+
+<body>
+    <div class="zodiac-container">
+        <div class="top-bar">
+            <select onchange="location.href=this.value">
+                <option value="/resultZodiac.html" selected>띠</option>
+        		<option value="/resultTarot.html">타로</option>
+            </select>
+        </div>
+        <button onclick="goToMain()" class="main-button">메인화면으로</button>
+        <script>
+            function goToMain() {
+            window.location.href = "/main.html"; 
+            }
+        </script>
+
+        <div class="zodiac-body">
+            <div class="image-box">
+                <img th:src="@{${zodiac.imgLink}}" alt="띠 이미지">
+            </div>
+
+            <div class="result-box">
+                <p th:text="${randomContext}">랜덤 운세 결과</p>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
