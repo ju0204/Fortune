@@ -23,23 +23,23 @@ public class Tarot {
 	private Long id;
 	
 	@Setter
-	@Column(columnDefinition = "TEXT", name = "contextLove")
+	@Column(columnDefinition = "TEXT", name = "contextlove")
 	private String contextLove;
 	
 	@Setter
-	@Column(columnDefinition = "TEXT", name = "contextCareer")
+	@Column(columnDefinition = "TEXT", name = "contextcareer")
 	private String contextCareer;
 	
 	@Setter
-	@Column(columnDefinition = "TEXT", name = "contextMoney")
+	@Column(columnDefinition = "TEXT", name = "contextmoney")
 	private String contextMoney;
 	
 	@Setter
-	@Column(columnDefinition = "TEXT", name = "contextHealth")
+	@Column(columnDefinition = "TEXT", name = "contexthealth")
 	private String contextHealth;
 	
 	@Setter
-	@Column(name = "imgLink")
+	@Column(name = "imglink")
 	private String imgLink;
 	
 	protected Tarot() {}

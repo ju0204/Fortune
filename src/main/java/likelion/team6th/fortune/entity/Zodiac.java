@@ -29,11 +29,11 @@ public class Zodiac {
 	private String context;
 	
 	@Setter
-	@Column(columnDefinition = "TEXT", name = "imgLink")
+	@Column(columnDefinition = "TEXT", name = "imglink")
 	private String imgLink;
 	
 	@Setter
-	@Column(name = "zodiacType")
+	@Column(name = "zodiactype")
 	private String zodiacType;
 	
 	protected Zodiac() {}
