@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>운세 관리자 페이지</title>
+  <link rel="stylesheet" href="/css/admin-manage.css" />
+</head>
+<body>
+  <div class="manage-box">
+    <h2>운세 관리자 페이지</h2>
+
+    <div class="top-bar">
+      <select name="category" id="category">
+        <option value="띠">띠</option>
+        <option value="타로">타로</option>
+      </select>
+      <button class="add-btn" onclick="goToAddPage()">+ 추가</button>
+    </div>
+
+    <table class="fortune-table">
+      <thead>
+        <tr>
+          <th style="width: 20%;">이미지</th>
+          <th style="width: 70%;">결과</th>
+          <th style="width: 10%;">관리</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr th:each="fortune : ${fortuneList}">
+          <td>
+            <div class="image-placeholder">
+              <img th:src="@{${fortune.imgLink}}" alt="운세 이미지" />
+            </div>
+          </td>
+          <td>
+            <div class="text-placeholder" th:text="${fortune.content}"></div>
+          </td>
+          <td>
+            <div class="btn-group">
+              <!-- ✅ 띠 카테고리 -->
+              <form th:if="${#strings.trim(fortune.category) == '띠'}"
+                    th:action="@{'/admin/zodiac/update/' + ${fortune.id}}"
+                    method="get"
+                    style="display:inline;">
+                <button type="submit" class="edit-btn">수정</button>
+              </form>
+
+              <!-- ✅ 타로 카테고리 -->
+              <form th:if="${#strings.trim(fortune.category) == '타로'}"
+                    th:action="@{'/admin/taro/update/' + ${fortune.id}}"
+                    method="get"
+                    style="display:inline;">
+                <button type="submit" class="edit-btn">수정</button>
+              </form>
+
+              <!-- ✅ 삭제 (공통 분기) -->
+              <form th:action="@{${#strings.trim(fortune.category) == '타로'} 
+                  ? '/admin/tarot/delete/' + ${fortune.id} 
+                  : '/admin/zodiac/delete/' + ${fortune.id}}"
+                    method="post"
+                    style="display:inline;">
+                <button type="submit" class="delete-btn">삭제</button>
+              </form>
+            </div>
+          </td>
+          
+        </tr>
+        
+      </tbody>
+    </table>
+
+   
+
+  <script>
+    function goToAddPage() {
+      const category = document.getElementById("category").value;
+      if (category === '타로') {
+        location.href = '/admin/add/taro';
+      } else if (category === '띠') {
+        location.href = '/admin/add/zodiac';
+      }
+    }
+  </script>
+</body>
+</html>

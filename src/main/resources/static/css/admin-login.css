@@ -1,0 +1,54 @@
+/* src/main/resources/static/css/admin-login.css */
+html, body {
+  height: 100%;
+  margin: 0;
+  padding: 0;
+  font-family: 'Arial', sans-serif;
+  background-image: url("https://search.pstatic.net/common/?src=http%3A%2F%2Fblogfiles.naver.net%2FMjAyNDEwMDhfMjU5%2FMDAxNzI4MzQ5MjgwMjE2.HIvIUFAEAcSEN3OtYMYIZGYkdzIV0eOgRqg6cdYyCRcg.6kyoMkR78Tx6gmXX__XPCfeFeUxYGnwDzQuBJyqMRrwg.JPEG%2F%25C3%25CA%25BD%25C2%25B4%25DE%25B0%25FA_%25B9%25E3%25C7%25CF%25B4%25C3_%252810%2529.jpg&type=sc960_832");
+  background-repeat: no-repeat;
+  background-position: center center;
+  background-attachment: fixed;
+  background-size: cover;
+}
+
+
+
+.login-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100%;
+}
+
+.login-box {
+  background: rgba(255, 255, 255, 0.85);
+  padding: 40px;
+  border-radius: 10px;
+  box-shadow: 0 0 10px rgba(0,0,0,0.3);
+  text-align: center;
+}
+
+.lock-image img {
+  width: 60px;
+  height: auto;
+}
+
+form input {
+  display: block;
+  width: 200px;
+  margin-bottom: 15px;
+  padding: 10px;
+  border: 1px solid rgb(255, 255, 255);
+}
+
+form button {
+  width: 100%;
+  padding: 10px;
+  background-color: rgb(255, 255, 255);
+  border: none;
+  cursor: pointer;
+}
+
+form button:hover {
+  background-color: rgb(255, 255, 255);
+}

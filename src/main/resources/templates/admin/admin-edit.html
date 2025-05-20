@@ -1,0 +1,24 @@
+<!-- src/main/resources/templates/admin/admin-edit.html -->
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+  <meta charset="UTF-8">
+  <title>운세 수정</title>
+  <link rel="stylesheet" href="/css/admin-edit.css" />
+</head>
+<body>
+  <div class="form-box">
+    <h2>운세 수정</h2>
+    <form action="/admin/update" method="post">
+      <!-- 수정할 운세 ID -->
+      <input type="hidden" name="id" th:value="${fortune.id}" />
+
+      <input type="text" name="title" placeholder="제목" th:value="${fortune.title}" required><br>
+      <textarea name="content" placeholder="내용" required th:text="${fortune.content}"></textarea><br>
+      <input type="text" name="category" placeholder="카테고리" th:value="${fortune.category}" required><br>
+
+      <button type="submit">수정 완료</button>
+    </form>
+  </div>
+</body>
+</html>
