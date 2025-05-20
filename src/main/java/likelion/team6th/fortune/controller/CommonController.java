@@ -7,9 +7,12 @@ import java.util.Map;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.web.PageableDefault;
+import org.springframework.stereotype.Controller;
+import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import likelion.team6th.fortune.dto.TarotDTO;
@@ -20,7 +23,7 @@ import likelion.team6th.fortune.service.PagingService;
 import lombok.RequiredArgsConstructor;
 
 @RequiredArgsConstructor
-@RestController
+@Controller
 public class CommonController {
 	
 	private final CommonService commonService;
@@ -48,24 +51,30 @@ public class CommonController {
 	}
 	
 	@GetMapping("/admin/list")
-	public Map<String, Object> getAllFortune(@PageableDefault(page = 0, size = 10) Pageable pageable) {
+	public String getAllFortune(@PageableDefault(page = 0, size = 8) Pageable pageable,
+								@RequestParam(defaultValue = "타로") String category,
+								ModelMap map) {
 		
-		Page<TarotDTO> tarotList = commonService.getAllTarots(pageable);
-		Page<ZodiacAdminDTO> zodiacList = commonService.getAllZodiacs(pageable);
-
 		Map<String, Object> response = new HashMap<>();
 		
-		List<Integer> tarotPageNumbers  = pagingService.getPageNumbers(pageable.getPageNumber(),
-																	tarotList.getTotalPages());
-		List<Integer> zodiacPageNumbers  = pagingService.getPageNumbers(pageable.getPageNumber(),
-																	zodiacList.getTotalPages());
-		
-	    response.put("tarotList", tarotList);
-	    response.put("zodiacList", zodiacList);
-	    response.put("tarotPage", tarotPageNumbers);
-	    response.put("zodiacPage", zodiacPageNumbers);
-		
-        return response;
+		if ("타로".equals(category)) {
+			Page<TarotDTO> tarotList = commonService.getAllTarots(pageable);
+			List<Integer> tarotPageNumbers  = pagingService.getPageNumbers(pageable.getPageNumber(),
+																			tarotList.getTotalPages());
+			response.put("tarotList", tarotList);
+			response.put("tarotPage", tarotPageNumbers);
+		} else if ("띠".equals(category)) {
+			Page<ZodiacAdminDTO> zodiacList = commonService.getAllZodiacs(pageable);
+			List<Integer> zodiacPageNumbers  = pagingService.getPageNumbers(pageable.getPageNumber(),
+																			zodiacList.getTotalPages());
+			response.put("zodiacList", zodiacList);
+			response.put("zodiacPage", zodiacPageNumbers);
+		}
+	    
+	    map.addAllAttributes(response);
+	    map.addAttribute("category", category);
+	    
+        return "admin/admin-manage";
     }
 
 }

@@ -12,56 +12,40 @@
       <!-- 오른쪽 상단 저장/취소 버튼 -->
       <div class="edit-actions">
 		<button class="save-btn" onclick="document.getElementById('addForm').submit();">저장</button>
-        <button class="cancel-btn" onclick="location.href='/admin/manage'">취소</button>
+        <button class="cancel-btn" th:onclick="'location.href=\'' + @{/admin/list} + '\''">취소</button>
         
       </div>
 
       <h2>타로 운세 추가</h2>
 
-      <form id="addForm" action="/admin/add" method="post" enctype="multipart/form-data">
+      <form id="addForm" action="/admin/tarot/add" method="post">
         <input type="hidden" name="category" value="타로" />
 
         <table class="edit-table">
           <tr>
-            <td rowspan="4" class="image-preview">
-              <label for="imageUpload">
-                <img id="previewImage" src="/img/default.png" alt="미리보기" />
-              </label>
-              <input type="file" id="imageUpload" name="imageFile" accept="image/*" onchange="previewFile()" />
-            </td>
             <td>사랑</td>
-            <td><input type="text" name="contextLove" /></td>
+            <td><input type="text" name="contextLove" th:value="${result.contextLove}" required/></td>
           </tr>
           <tr>
             <td>건강</td>
-            <td><input type="text" name="contextHealth" /></td>
+            <td><input type="text" name="contextHealth"th:value="${result.contextHealth}" required /></td>
           </tr>
           <tr>
             <td>커리어</td>
-            <td><input type="text" name="contextCareer" /></td>
+            <td><input type="text" name="contextCareer" th:value="${result.contextCareer}" required/></td>
           </tr>
           <tr>
             <td>금전</td>
-            <td><input type="text" name="contextMoney" /></td>
+            <td><input type="text" name="contextMoney"th:value="${result.contextMoney}" required /></td>
+          </tr>
+           <tr>
+            <td>이미지</td>
+            <td><input type="text" name="imgLink" th:value="${result.imgLink}" required/></td>
           </tr>
         </table>
       </form>
     </div>
   </div>
 
-  <script>
-    function previewFile() {
-      const file = document.getElementById("imageUpload").files[0];
-      const reader = new FileReader();
-
-      reader.onloadend = function () {
-        document.getElementById("previewImage").src = reader.result;
-      }
-
-      if (file) {
-        reader.readAsDataURL(file);
-      }
-    }
-  </script>
 </body>
 </html>

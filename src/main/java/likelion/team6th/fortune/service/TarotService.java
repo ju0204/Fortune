@@ -49,6 +49,14 @@ public class TarotService {
 	    return TarotDTO.from(update);
 		
 	}
+	
+	//수정페이지로 이동시 찾을 id
+	public TarotDTO findById(Long id) {
+	    Tarot tarot = tarotRepository.findById(id)
+	        .orElseThrow(() -> new IllegalArgumentException("해당 타로가 없습니다: " + id));
+
+	    return TarotDTO.from(tarot);
+	}
 
 
 	public boolean deleteTarot(Long id) {

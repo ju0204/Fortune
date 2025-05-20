@@ -169,3 +169,11 @@ h2 {
 .page-btn:hover {
   background-color: #ced4da;
 }
+
+.present-table{
+  overflow-y: auto;
+  max-height: 75%;
+}
+.present-table img {
+  width: 100%;
+}
