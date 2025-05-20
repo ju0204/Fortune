@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>운세 추가</title>
+  <link rel="stylesheet" href="admin-add.css" />
+  <style>
+    html, body {
+      margin: 0;
+      padding: 0;
+      height: 100%;
+      font-family: 'Arial', sans-serif;
+    }
+
+    body {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      min-height: 100vh;
+      background-color: #fff;
+    }
+
+    .form-box {
+      width: 500px;
+      background: #fff;
+      padding: 30px;
+      border-radius: 10px;
+      box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    }
+
+    h2 {
+      text-align: center;
+      margin-bottom: 20px;
+    }
+
+    label {
+      display: block;
+      margin-top: 15px;
+      margin-bottom: 5px;
+      font-weight: bold;
+    }
+
+    input, textarea, select {
+      width: 100%;
+      padding: 10px;
+      font-size: 14px;
+      border: 1px solid #ccc;
+      border-radius: 5px;
+    }
+
+    .button-group {
+      display: flex;
+      justify-content: space-between;
+      margin-top: 20px;
+    }
+
+    button {
+      padding: 10px 20px;
+      font-size: 14px;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+    }
+
+    .save-btn {
+      background-color: #3498db;
+      color: white;
+    }
+
+    .cancel-btn {
+      background-color: #aaa;
+      color: white;
+    }
+  </style>
+</head>
+<body>
+  <div class="form-box">
+    <h2>운세 추가</h2>
+    <form>
+      <label for="title">제목</label>
+      <input type="text" id="title" name="title" placeholder="예: 양띠 운세" required />
+
+      <label for="content">내용</label>
+      <textarea id="content" name="content" placeholder="운세 내용을 입력하세요." required></textarea>
+
+      <label for="category">카테고리</label>
+      <select id="category" name="category">
+        <option value="띠">띠</option>
+        <option value="타로">타로</option>
+      </select>
+
+      <div class="button-group">
+        <button type="submit" class="save-btn">등록</button>
+        <button type="button" onclick="location.href='admin-manage.html'" class="cancel-btn">취소</button>
+      </div>
+    </form>
+  </div>
+</body>
+</html>

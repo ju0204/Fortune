@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+  <meta charset="UTF-8">
+  <title>띠 운세 추가</title>
+  <link rel="stylesheet" href="/css/edit-zodiac.css"> <!-- ✅ 기존 스타일 재사용 -->
+</head>
+<body>
+  <div class="edit-container">
+    <div class="edit-box">
+      <!-- 상단 버튼 -->
+      <div class="edit-actions">
+	<!--	<button class="save-btn" onclick="document.getElementById('addZodiacForm').submit();">저장</button> -->
+		<button class="save-btn" onclick="location.href='/admin/manage'">저장</button>
+        <button class="cancel-btn" onclick="location.href='/admin/manage'">취소</button>
+        
+      </div>
+
+      <h2>띠 운세 추가</h2>
+
+      <form id="addZodiacForm" action="/admin/add" method="post" enctype="multipart/form-data">
+        <input type="hidden" name="category" value="띠" />
+
+        <table class="edit-table">
+          <tr>
+            <td rowspan="3" class="image-preview">
+              <label for="imageUpload">
+                <img id="previewImage" src="/img/default.png" alt="미리보기" />
+              </label>
+              <input type="file" id="imageUpload" name="imageFile" accept="image/*" onchange="previewFile()" />
+            </td>
+            <td>변수1</td>
+            <td><input type="text" name="var1" placeholder="내용 입력" /></td>
+          </tr>
+          <tr>
+            <td>변수2</td>
+            <td><input type="text" name="var2" placeholder="내용 입력" /></td>
+          </tr>
+          <tr>
+            <td>변수3</td>
+            <td><input type="text" name="var3" placeholder="내용 입력" /></td>
+          </tr>
+        </table>
+      </form>
+    </div>
+  </div>
+
+  <script>
+    function previewFile() {
+      const file = document.getElementById("imageUpload").files[0];
+      const reader = new FileReader();
+      reader.onloadend = function () {
+        document.getElementById("previewImage").src = reader.result;
+      };
+      if (file) {
+        reader.readAsDataURL(file);
+      }
+    }
+  </script>
+</body>
+</html>
