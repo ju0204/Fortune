@@ -29,7 +29,7 @@ public class SecurityConfig {
 
         http
                 .authorizeHttpRequests(authorizeRequests -> authorizeRequests
-//                    .requestMatchers("/admin/**").authenticated() //admin 요청에 대해서 유저가 인증이 되었다면.
+                    .requestMatchers("/admin/**").authenticated() //admin 요청에 대해서 유저가 인증이 되었다면.
                     .anyRequest().permitAll()); //어떠한 요청이든 접근을 허용.
 
         http
