@@ -1,7 +1,7 @@
 #!/bin/bash
 
 # 1. 최신 코드 받아오기
-git pull origin dev
+git pull origin main
 
 # 2. Maven 빌드 (테스트는 건너뜀)
 mvn clean package -DskipTests
