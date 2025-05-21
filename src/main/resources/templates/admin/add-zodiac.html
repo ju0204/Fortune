@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+  <meta charset="UTF-8">
+  <title>띠 운세 추가</title>
+  <link rel="stylesheet" href="/css/edit-zodiac.css"> <!-- ✅ 기존 스타일 재사용 -->
+</head>
+<body>
+  <div class="edit-container">
+    <div class="edit-box">
+      <div class="edit-actions">
+		<button class="save-btn" onclick="document.getElementById('addForm').submit();">저장</button>
+        <button class="cancel-btn" th:onclick="'location.href=\'' + @{/admin/list} + '\''">취소</button>
+        
+      </div>
+
+      <h2>띠 운세 추가</h2>
+
+      <form id="addForm" action="/admin/zodiac/add" method="post" >
+        <input type="hidden" name="category" value="띠" />
+
+        <table class="edit-table">
+          <tr>
+            <td>띠</td>
+            <td><input type="text" name="zodiacType"  th:value="${result?.zodiacType}" required/></td>
+          </tr>
+          <tr>
+            <td>내용</td>
+            <td><input type="text" name="context"  th:value="${result?.context}" required/></td>
+          </tr>
+          <tr>
+            <td>이미지</td>
+            <td><input type="text" name="imgLink"  th:value="${result?.imgLink}" required/></td>
+          </tr>
+        </table>
+      </form>
+    </div>
+  </div>
+
+</body>
+</html>

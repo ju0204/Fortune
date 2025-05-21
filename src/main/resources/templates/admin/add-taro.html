@@ -1,0 +1,51 @@
+<!-- src/main/resources/templates/admin/add-taro.html -->
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+  <meta charset="UTF-8" />
+  <title>타로 운세 추가</title>
+  <link rel="stylesheet" href="/css/edit-taro.css" />
+</head>
+<body>
+  <div class="edit-container">
+    <div class="edit-box">
+      <!-- 오른쪽 상단 저장/취소 버튼 -->
+      <div class="edit-actions">
+		<button class="save-btn" onclick="document.getElementById('addForm').submit();">저장</button>
+        <button class="cancel-btn" th:onclick="'location.href=\'' + @{/admin/list} + '\''">취소</button>
+        
+      </div>
+
+      <h2>타로 운세 추가</h2>
+
+      <form id="addForm" action="/admin/tarot/add" method="post">
+        <input type="hidden" name="category" value="타로" />
+
+        <table class="edit-table">
+          <tr>
+            <td>사랑</td>
+            <td><input type="text" name="contextLove" th:value="${result.contextLove}" required/></td>
+          </tr>
+          <tr>
+            <td>건강</td>
+            <td><input type="text" name="contextHealth"th:value="${result.contextHealth}" required /></td>
+          </tr>
+          <tr>
+            <td>커리어</td>
+            <td><input type="text" name="contextCareer" th:value="${result.contextCareer}" required/></td>
+          </tr>
+          <tr>
+            <td>금전</td>
+            <td><input type="text" name="contextMoney"th:value="${result.contextMoney}" required /></td>
+          </tr>
+           <tr>
+            <td>이미지</td>
+            <td><input type="text" name="imgLink" th:value="${result.imgLink}" required/></td>
+          </tr>
+        </table>
+      </form>
+    </div>
+  </div>
+
+</body>
+</html>

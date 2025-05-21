@@ -1,5 +1,7 @@
 package likelion.team6th.fortune.entity;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
@@ -10,6 +12,7 @@ import lombok.Getter;
 import lombok.Setter;
 import lombok.ToString;
 
+@JsonIgnoreProperties({"hibernateLazyInitializer", "handler"})
 @Getter
 @ToString
 @Entity
@@ -22,21 +25,27 @@ public class Zodiac {
 	private Long id;
 	
 	@Setter
+	@Column(columnDefinition = "TEXT")
 	private String context;
 	
 	@Setter
+	@Column(columnDefinition = "TEXT", name = "imglink")
 	private String imgLink;
 	
+	@Setter
+	@Column(name = "zodiactype")
 	private String zodiacType;
 	
 	protected Zodiac() {}
 	
-	private Zodiac(String context, String imgLink) {
+	private Zodiac(String context, String imgLink, String zodiacType) {
 		this.context = context;
 		this.imgLink = imgLink;
+		this.zodiacType = zodiacType;
 	}
-	
-	public static Zodiac of(String context, String imgLink) {
-		return new Zodiac(context, imgLink);
+
+	public static Zodiac of(String context, String imgLink, String zodiacType) {
+		return new Zodiac(context, imgLink, zodiacType);
+
 	}
 }

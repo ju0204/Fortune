@@ -1,0 +1,35 @@
+version: '3.8'
+
+networks:
+  team6th-network:
+
+services:
+  db:
+    image: mysql:latest
+    container_name: mysql-server
+    restart: unless-stopped
+    environment:
+      MYSQL_ROOT_PASSWORD: root
+      MYSQL_DATABASE: fortune
+      MYSQL_USER: admin
+      MYSQL_PASSWORD: admin
+    ports:
+      - "3306:3306"
+    volumes:
+      - ./db-init:/docker-entrypoint-initdb.d
+      - ./db-conf/my.conf:/etc/mysql/conf.d/my.cnf
+    networks:
+      - team6th-network
+
+  app:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: backend-server
+    restart: unless-stopped
+    ports:
+      - "8080:8080"
+    networks:
+      - team6th-network
+    depends_on:
+      - db

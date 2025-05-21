@@ -1,0 +1,48 @@
+<!-- src/main/resources/templates/admin/edit-zodiac.html -->
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+  <meta charset="UTF-8">
+  <title>띠 운세 수정</title>
+  <link rel="stylesheet" href="/css/edit-zodiac.css">
+</head>
+<body>
+  <div class="edit-container">
+    <div class="edit-box">
+      <!-- 오른쪽 상단 저장/취소 버튼 -->
+      <div class="edit-actions">
+		
+		<button class="save-btn" onclick="document.getElementById('editForm').submit();">저장</button>
+        <button class="cancel-btn" th:onclick="'location.href=\'' + @{/admin/list} + '\''">취소</button>
+      </div>
+
+      <h2>띠 운세 수정</h2>
+
+      <form id="editForm" th:action="@{/admin/zodiac/update/{id}(id=${result.id})}" method="post" enctype="multipart/form-data">
+        <input type="hidden" name="id" th:value="${result?.id}" />
+        <input type="hidden" name="category" value="띠" />
+
+        <table class="edit-table">
+          <tr>
+            <td rowspan="3" class="image-preview">
+              <label for="imgLink">
+                <img id="previewImage" th:src="${result.imgLink != null} ? ${result.imgLink} : '/img/default.png'" alt="이미지가 없습니다." />
+              </label>
+            </td>
+            <td>띠</td>
+            <td><input type="text" name="zodiacType"  th:value="${result?.zodiacType}" required/></td>
+          </tr>
+          <tr>
+            <td>내용</td>
+            <td><input type="text" name="context"  th:value="${result?.context}" required/></td>
+          </tr>
+          <tr>
+            <td>이미지</td>
+            <td><input type="text" name="imgLink"  th:value="${result?.imgLink}" required/></td>
+          </tr>
+        </table>
+      </form>
+    </div>
+  </div>
+</body>
+</html>

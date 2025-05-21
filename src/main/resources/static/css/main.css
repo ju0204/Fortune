@@ -1,0 +1,65 @@
+body {
+  background-image: url('https://search.pstatic.net/common/?src=http%3A%2F%2Fblogfiles.naver.net%2FMjAyNDEwMDhfMjU5%2FMDAxNzI4MzQ5MjgwMjE2.HIvIUFAEAcSEN3OtYMYIZGYkdzIV0eOgRqg6cdYyCRcg.6kyoMkR78Tx6gmXX__XPCfeFeUxYGnwDzQuBJyqMRrwg.JPEG%2F%25C3%25CA%25BD%25C2%25B4%25DE%25B0%25FA_%25B9%25E3%25C7%25CF%25B4%25C3_%252810%2529.jpg&type=sc960_832');
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  margin: 0;
+  font-family: sans-serif;
+}
+
+/* 오른쪽 상단 톱니바퀴 */
+.top-bar {
+  position: fixed;
+  top: 20px;
+  right: 20px;
+  z-index: 1000;
+}
+
+.admin-button {
+  background-color: transparent;
+  border: none;
+  cursor: pointer;
+}
+
+.admin-button img {
+  width: 30px;
+  height: auto;
+}
+
+/* 가운데 흰색 박스 */
+.main-box form {
+  background-color: white;
+  padding: 40px;
+  border-radius: 10px;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  align-items: center;
+  box-shadow: 0 0 15px rgba(0, 0, 0, 0.2);
+}
+
+/* 연도 선택, 이름 입력 */
+.input-field {
+  width: 250px;
+  padding: 10px;
+  font-size: 16px;
+  border: none;
+  background-color: #eee;
+  border-radius: 4px;
+  box-sizing: border-box;
+  appearance: none;
+}
+
+/* 운세보러가기 버튼 */
+.fortune-button {
+  background-color: #eee;
+  padding: 8px 16px;
+  border: none;
+  font-size: 14px;
+  cursor: pointer;
+  border-radius: 4px;
+}
