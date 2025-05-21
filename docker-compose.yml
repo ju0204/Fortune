@@ -2,7 +2,6 @@ version: '3.8'
 
 networks:
   team6th-network:
-    external: true
 
 services:
   db:
